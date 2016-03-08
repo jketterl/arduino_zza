@@ -26,12 +26,22 @@ void loop() {
     out2.home();
     Serial.println(" OK");
   } else {
-    int pos = input.toInt();
-    Serial.print("going to ");
-    Serial.print(pos);
-    Serial.print("...");
-    out1.goTo(pos);
-    out2.goTo(pos);
-    Serial.println(" OK");
+    int comma = input.indexOf(',');
+    if (comma < 0) {
+      Serial.println("Error: invalid format");
+    } else {
+      int pos1 = input.substring(0, comma).toInt();
+      int pos2 = input.substring(comma + 1).toInt();
+      
+      Serial.print("output 1 going to: ");
+      Serial.println(pos1);
+      Serial.print("output 2 going to: ");
+      Serial.println(pos2);
+      
+      out1.goTo(pos1);
+      out2.goTo(pos2);
+      Serial.println("OK");
+    }
+      
   }
 }
