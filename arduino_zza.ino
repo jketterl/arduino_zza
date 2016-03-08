@@ -1,8 +1,12 @@
-#define MOTOR_PIN 6
-#define MOTOR_SENSE 7
-#define HOME_SENSE 5
+#define HOME_SENSE 2
+#define MOTOR_PIN 3
+#define MOTOR_SENSE 4
 #define LED 13
 #define MOTOR_SHUTOFF_DELAY 0
+
+#include "output.h"
+
+Output out(5, 6, 7);
 
 void setup() {
   // put your setup code here, to run once:
@@ -10,6 +14,8 @@ void setup() {
   pinMode(LED, OUTPUT);
   
   home();
+  
+  out.begin();
   
   Serial.begin(9600);
 }
@@ -90,6 +96,7 @@ void loop() {
     Serial.print(pos);
     Serial.print("...");
     goTo(pos);
+    out.goTo(pos);
     Serial.println(" OK");
   }
 }
