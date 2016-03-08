@@ -12,6 +12,7 @@ Output out2(5, 6, 7);
 void setup() {
   out1.begin();
   out2.begin();
+  pinMode(LED, OUTPUT);
   
   Serial.begin(9600);
 }
@@ -38,8 +39,17 @@ void loop() {
       Serial.print("output 2 going to: ");
       Serial.println(pos2);
       
-      out1.goTo(pos1);
-      out2.goTo(pos2);
+      out1.setTarget(pos1);
+      out2.setTarget(pos2);
+      
+      digitalWrite(LED, HIGH);
+      bool finished = false;
+      while (!finished) {
+        finished = out1.process();
+        finished = out2.process() && finished;
+      }
+      digitalWrite(LED, LOW);
+
       Serial.println("OK");
     }
       
