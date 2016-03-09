@@ -62,7 +62,9 @@ bool Output::process() {
   } else if (_state == STATE_HOMING) {
     if (!digitalRead(_homePin)) {
       _currentPosition = 0;
-      _state = STATE_STEPPING;
+      motorOff();
+      _timestamp = millis() + MOTOR_SHUTOFF_DELAY;
+      _state = STATE_SPINDOWN;
     }
   } else if (_state == STATE_STEPPING) {
     if (_target == _currentPosition) {
