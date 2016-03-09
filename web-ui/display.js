@@ -57,7 +57,7 @@ Display.prototype.show = function(train, cb) {
         return cb(new Error('train not displayable :('));
     }
     me.onOpen(function(){
-        var message = lines[train.line] + ',' + destinations[train.destination] + '\n';
+        var message = destinations[train.destination] + ',' + lines[train.line] + '\n';
         me.output.write(message, function(err) {
             if (err) return cb(err);
             me.current = train;
