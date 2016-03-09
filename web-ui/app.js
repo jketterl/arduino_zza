@@ -11,12 +11,13 @@ var display = new Display('/dev/ttyACM0');
 var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-var ueParser = bodyParser.urlencoded();
+var ueParser = bodyParser.urlencoded({extended: false});
 
 app.get('/', function(req, res) {
     res.render('index', {
         lines: Object.keys(lines),
-        destinations: Object.keys(destinations)
+        destinations: Object.keys(destinations),
+        current: display.current
     });
 });
 

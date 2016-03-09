@@ -7,6 +7,11 @@ var lines = require('../lines.json'),
 var Display = function(tty) {
     var me = this;
     me.openQueue = [];
+    me.current = {
+        line: '',
+        destination: ''
+    };
+
     me.output = new SerialPort(tty, {
         baudrate: 9600
     }, true, function(err) {
@@ -53,7 +58,11 @@ Display.prototype.show = function(train, cb) {
     }
     me.onOpen(function(){
         var message = lines[train.line] + ',' + destinations[train.destination] + '\n';
-        me.output.write(message, cb);
+        me.output.write(message, function(err) {
+            if (err) return cb(err);
+            me.current = train;
+            cb();
+        });
     });
 };
 

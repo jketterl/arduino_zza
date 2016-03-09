@@ -15,7 +15,7 @@
                 <label for="line">Linie</label>
                 <select class="form-control" name="line" id="line">
                     <% lines.forEach(function(l){ %>
-                        <option name="<%= l %>"><%= l %></option>
+                        <option name="<%= l %>" <% if (current.line == l) { %>selected="selected"<% } %>><%= l %></option>
                     <% }); %>
                 </select>
             </div>
@@ -23,7 +23,7 @@
                 <label for="destionation">Ziel</label>
                 <select class="form-control" name="destination" id="destination">
                     <% destinations.forEach(function(d){ %>
-                        <option name="<%= d %>"><%= d %></option>
+                        <option name="<%= d %>" <% if (current.destination == d) { %>selected="selected"<% } %>><%= d %></option>
                     <% }); %>
                 </select>
             </div>
