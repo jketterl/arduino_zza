@@ -1,0 +1,25 @@
+{
+  "name": "web-ui",
+  "version": "1.0.0",
+  "description": "WEB-UI for MVG ZZA",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jketterl/arduino_zza.git"
+  },
+  "author": "Jakob Ketterl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jketterl/arduino_zza/issues"
+  },
+  "homepage": "https://github.com/jketterl/arduino_zza#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "serialport": "^2.0.6"
+  }
+}

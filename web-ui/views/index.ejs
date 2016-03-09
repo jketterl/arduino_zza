@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<HTML><HEAD>
+    <title>Zugzielanzeiger</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+</HEAD><BODY>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#">Zugzielanzeiger</a>
+        </div>
+    </nav>
+    <div class="container">
+        <form method="POST" action="update">
+            <div class="form-group">
+                <label for="line">Linie</label>
+                <select class="form-control" name="line" id="line">
+                    <% lines.forEach(function(l){ %>
+                        <option name="<%= l %>"><%= l %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="destionation">Ziel</label>
+                <select class="form-control" name="destination" id="destination">
+                    <% destinations.forEach(function(d){ %>
+                        <option name="<%= d %>"><%= d %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <button class="btn btn-primary">Abschicken!</button>
+        </form>
+    </div>
+</BODY></HTML>
