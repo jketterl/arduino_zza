@@ -22,7 +22,7 @@ while true
 	puts 'updating display...'
 	result = MVG::Live.fetch station, { :transports => [ :u ] }
 	filtered = result.select do |train|
-		lines.key?(train[:line]) && destinations.key?(train[:destination])
+		lines.key?(train[:line]) && destinations.key?(train[:destination]) && train[:minutes] <= 5
 	end
 
 	if filtered.empty?
