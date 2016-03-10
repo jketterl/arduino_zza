@@ -4,8 +4,8 @@ require 'serialport'
 
 station = 'Sendlinger Tor'
 
-lines = JSON.parse(File.read('lines.json'))
-destinations = JSON.parse(File.read('destinations.json'))
+lines = JSON.parse(File.read('../lines.json'))
+destinations = JSON.parse(File.read('../destinations.json'))
 output = SerialPort.new('/dev/ttyACM0', {:baud => 9600})
 trap("INT") {
 	output.close()
