@@ -37,3 +37,7 @@ body {
 .U2 {
     background-color: #a00;
 }
+
+.U8 {
+    background-image: repeating-linear-gradient(165deg, #a00, #a00 50%, #f90 50%, #f90 100%);
+}
