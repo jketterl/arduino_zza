@@ -1,0 +1,39 @@
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+.lines, .destinations {
+    padding: 5px;
+}
+
+.line, .destination, .length, .position {
+    border: 1px solid #aaa;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.destination, .length, .position {
+    background-color: #fff;
+    color: #000;
+    width: 33.3%;
+    float: left;
+}
+
+.destination {
+    height: 40px;
+    overflow: hidden;
+}
+
+.U6 {
+    background-color: #00f;
+}
+
+.U3 {
+    background-color: #f90;
+}
+
+.U2 {
+    background-color: #a00;
+}

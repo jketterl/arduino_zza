@@ -21,6 +21,13 @@ app.get('/', function(req, res) {
     });
 });
 
+app.get('/tiles', function(req, res) {
+    res.render('tiles', {
+        lines: lines,
+        destinations: destinations
+    });
+});
+
 app.post('/update', ueParser, function(req, res) {
     display.show(req.body, function(err) {
         if (err) util.log(err);

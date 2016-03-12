@@ -9,7 +9,9 @@ var Display = function(tty) {
     me.openQueue = [];
     me.current = {
         line: '',
-        destination: ''
+        destination: '',
+        length:'lang',
+        position:'mitte'
     };
 
     me.output = new SerialPort(tty, {
@@ -53,16 +55,53 @@ Display.prototype.home = function(cb) {
 
 Display.prototype.show = function(train, cb) {
     var me = this;
-    if (typeof(lines[train.line]) === 'undefined' || typeof(destinations[train.destination]) == 'undefined') {
-        return cb(new Error('train not displayable :('));
+
+    if (me.timeout) clearTimeout(me.timeout);
+
+    if (typeof(train.line) !== 'undefined' && typeof(lines[train.line]) !== 'undefined') {
+        me.current.line = train.line;
     }
+    if (typeof(train.destination) !== 'undefined' && typeof(destinations[train.destination]) !== 'undefined') {
+        me.current.destination = train.destination;
+    }
+    if (typeof(train.length) !== 'undefined') {
+        me.current.length = train.length;
+    }
+    if (typeof(train.position) !== 'undefined') {
+        me.current.position = train.position;
+    }
+
+    
     me.onOpen(function(){
-        var message = destinations[train.destination] + ',' + lines[train.line] + '\n';
+        var positionVariations = lines[me.current.line][me.current.length];
+        var lineIndex = positionVariations;
+        if (typeof(positionVariations) === 'object') {
+            lineIndex = positionVariations[me.current.position];
+        }
+
+        var message = destinations[me.current.destination] + ',' + lineIndex + '\n';
         me.output.write(message, function(err) {
             if (err) return cb(err);
-            me.current = train;
             cb();
         });
+
+        me.timeout = setTimeout(function(){
+            me.randomize();
+        }, 60000);
+    });
+};
+
+Display.prototype.randomize = function(){
+    var me = this;
+    var randomOffset = function(items) {
+        return items[Math.floor(Math.random() * items.length)];
+    };
+
+    me.show({
+        line: randomOffset(Object.keys(lines)),
+        destination: randomOffset(Object.keys(lines)),
+        length: randomOffset(['kurz', 'voll', 'lang']),
+        position: randomOffset(['hinten', 'mitte', 'vorne'])
     });
 };
 
