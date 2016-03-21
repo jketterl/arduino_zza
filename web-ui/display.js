@@ -102,7 +102,7 @@ Display.prototype.randomize = function(){
         destination: randomOffset(Object.keys(lines)),
         length: randomOffset(['kurz', 'voll', 'lang']),
         position: randomOffset(['hinten', 'mitte', 'vorne'])
-    });
+    }, function() {} );
 };
 
 module.exports = Display;
