@@ -18,6 +18,7 @@
   "homepage": "https://github.com/jketterl/arduino_zza#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.7",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "jquery": "^2.2.1",
