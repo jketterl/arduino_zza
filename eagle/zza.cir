@@ -1,0 +1,96 @@
+* SPICE netlist aus zza.sch
+* 21.04.15 23:00
+***************************
+*
+*    Node  Net
+*
+*    0     GND
+*    1     N$3
+*    2     N$4
+*    3     N$5
+*    4     N$6
+*    5     N$7
+*    6     N$8
+*    7     N$9
+*    8     N$10
+*    9     N$11
+*   10     N$12
+*   11     N$13
+*   12     N$14
+*   13     N$15
+*   14     N$16
+*   15     N$19
+*   16     VCC
+*
+***************************
+
+* C1
+C1  0 16
+
+* C2
+C2  7 4
+
+* C3
+C3  7 4
+
+* C4
+C4  13 14 0,1
+
+* C5
+C5  12 1 0,047
+
+* D1
+* PinOrder: 2
+*d1 13 12 1N4004
+*.model 1N4004 d
+* Warning: Unconnected Pins !
+* Warning: Not all of the Pins defined !
+
+* IC1
+IC1  0 14 16 03f024
+
+* IC2
+IC2  0 15 16 03f024
+
+* MOTOR
+*MOTOR  7 3 3 4
+
+* R1
+R1  1 0 10M
+
+* R2
+R2  11 10 10k
+
+* R3
+R3  8 5 22k
+
+* R4
+R4  2 9 1,6k
+
+* R5
+R5  13 12 16k
+
+* R6
+R6  12 0 10M
+
+* R7
+R7  12 14 100k
+
+* SV1
+SV1  0 7 2 6 12 16 1 15 11 13
+
+* T1
+T1  6 3 5 BT138-V
+
+* T2
+T2  8 9 5 pnp
+
+* T3
+T3  12 8 10 npn
+
+.control
+  op
+  print
+.endc
+
+.end
