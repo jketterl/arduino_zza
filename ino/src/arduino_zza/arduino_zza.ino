@@ -1,13 +1,9 @@
-#define HOME_SENSE 2
-#define MOTOR_PIN 3
-#define MOTOR_SENSE 4
 #define LED 13
-#define MOTOR_SHUTOFF_DELAY 0
 
 #include "output.h"
 
-Output out1(2, 3, 4);
-Output out2(5, 6, 7);
+Output out1(4, 2, 3);
+Output out2(7, 5, 6);
 
 void setup() {
   out1.begin();
@@ -55,3 +51,17 @@ void loop() {
       
   }
 }
+
+/*
+void loop() {
+  int index = 0;
+  while (index < 40) {
+    Serial.print("going to ");
+    Serial.println(index);
+    out1.setTarget(index);
+    while (!out1.process()) ;
+    delay(2000);
+    index += 1;
+  }
+}
+*/
